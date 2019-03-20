@@ -1,0 +1,10 @@
+{
+  "user": {
+    "username": "your twitch username, all lowercase",
+    "token": "your oauth token, including 'ouath:'"
+  },
+  "bot": {
+    "username": "a different twitch user, for message testing",
+    "token": "their oauth token"
+  }
+}

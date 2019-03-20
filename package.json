@@ -1,0 +1,22 @@
+{
+  "name": "twitchell",
+  "version": "1.0.0",
+  "description": "Simple, dependency-less Twitch chat processor for Node.",
+  "main": "lib/Twitchell.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "jasmine"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TotallyRadRichard/Twitchell.git"
+  },
+  "author": "Richard Key",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/TotallyRadRichard/Twitchell/issues"
+  },
+  "homepage": "https://github.com/TotallyRadRichard/Twitchell#readme"
+}
