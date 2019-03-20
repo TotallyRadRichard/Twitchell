@@ -2,7 +2,7 @@
   "name": "twitchell",
   "version": "1.0.0",
   "description": "Simple, dependency-less Twitch chat processor for Node.",
-  "main": "lib/Twitchell.js",
+  "main": "index.js",
   "directories": {
     "lib": "lib"
   },

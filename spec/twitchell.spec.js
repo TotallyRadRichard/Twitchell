@@ -1,5 +1,5 @@
 const config = require('./config.json'),
-      twitchell = require('../lib/Twitchell'),
+      twitchell = require('../index'),
       channels = [config.user.username];
       user = twitchell(config.user.username, config.user.token, channels),
       bot = twitchell(config.bot.username, config.bot.token, channels);
@@ -7,6 +7,8 @@ const config = require('./config.json'),
 user.on('error', err => { console.log(err) });
 
 describe('Twitchell Main Class', () => {
+  jasmine.DEFAULT_TIMEOUT_INTERVAL = 10000;
+  
   it('should fire connect and channel events', done => {
     let counts = { 
       connects: 0,
@@ -43,12 +45,20 @@ describe('Twitchell Main Class', () => {
   });
 
   it('should be able to send and receive messages', done => {
+    let count = 0;
+
     user.on('message', msg => {
       expect(msg.username).toEqual(config.bot.username);
-      expect(msg.message).toBe('Test Success!');
-      done();
+
+      if(++count === 2) {
+        expect(msg.message).toBe('Test Success! 2');
+        done();
+      } else {
+        expect(msg.message).toBe('Test Success!');
+      }
     });
 
-    bot.send('PRIVMSG', `#${config.user.username}`, ':Test Success!');
+    bot.say('Test Success!');
+    setTimeout(() => { bot.say('Test', 'Success!', '2'); }, 3000);
   });
 });
