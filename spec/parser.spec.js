@@ -63,6 +63,18 @@ describe('Message Parsing', () => {
     });
   });
 
+  it('should parse whispers', () => {
+    const msg = parse('@badges=global_mod/1,turbo/1;color=#0D4200;'
+      + 'display-name=dallas;emotes=25:0-4,12-16/1902:6-10;id=b34ccfc7-4977-403a-8a94-33c6bac34fb8;'
+      + 'mod=0;room-id=1337;subscriber=0;tmi-sent-ts=1507246572675;turbo=1;user-id=1337;'
+      + 'user-type=global_mod :ronni!ronni@ronni.tmi.twitch.tv WHISPER dallas :Whisper Test!');
+
+    expect(msg.type).toBe('whisper')
+    expect(msg.username).toBe('ronni');
+    expect(msg.channel).toBe('dallas');
+    expect(msg.message).toBe('Whisper Test!');
+  });
+
   it('should parse ban messages', () => {
     const msg = parse('@ban-duration=30 :tmi.twitch.tv CLEARCHAT #dallas :ronni');
 

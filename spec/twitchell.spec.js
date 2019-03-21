@@ -61,4 +61,15 @@ describe('Twitchell Main Class', () => {
     bot.say('Test Success!');
     setTimeout(() => { bot.say('Test', 'Success!', '2'); }, 3000);
   });
+
+  it('should be able to send and receive whispers', done => {
+    user.on('whisper', msg => {
+      expect(msg.channel).toBe(config.user.username);
+      expect(msg.username).toEqual(config.bot.username);
+      expect(msg.message).toBe('Whisper Test');
+      done();
+    });
+
+    bot.whisper(config.user.username, 'Whisper', 'Test');
+  });
 });
